@@ -18,10 +18,10 @@ class MarkovPy():
         for index, element in enumerate(self.words[:-1]):             # Loop over the words, skipping the last one
             self.nextransition[element].append(self.words[index+1])   # For each word append the next element as the possible following element
             
-            # Experimental option: Chain togheter words separated by punctuations symbols.
+            # Experimental option: Chain together words separated by punctuations symbols.
             
             if DOUBLE_PUNCT:
-               if self.words[index+1] in string.punctuation and index + 2 < len(self.words):
+               if slef.words[index] not in string.punctuaction and self.words[index+1] in string.punctuation and index + 2 < len(self.words):
                     self.nextransition[element].append(self.words[index+2])
             
             
