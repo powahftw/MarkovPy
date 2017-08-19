@@ -3,13 +3,16 @@ from random import choice
 import re
 import string
 
-DOUBLE_PUNCT = True
+DOUBLE_PUNCT = False
 
 class MarkovPy():
-    def __init__(self):
+    def __init__(self, txt = ""):
         self.nextransition = defaultdict(list)
         self.sourcetxt = ""
         self.words = []
+        
+        if txt:
+            self.morewords(txt)
         
     def morewords(self, txt = ""):
         self.sourcetxt += txt
