@@ -29,7 +29,7 @@ class MarkovPy():
             # Experimental option: Chain together words separated by punctuations symbols.
             
             if DOUBLE_PUNCT:
-               if slef.words[index] not in string.punctuaction and self.words[index+1] in string.punctuation and index + 2 < len(self.words):
+               if self.words[index] not in string.punctuaction and self.words[index+1] in string.punctuation and index + 2 < len(self.words):
                     self.nextransition[element].append(self.words[index+2])
             
             
