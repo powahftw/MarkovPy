@@ -15,6 +15,11 @@ class MarkovPy():
             self.morewords(txt)
         
     def morewords(self, txt = ""):
+         """
+        Add text to the source material. Process the new list of words and the transitions dictionary
+        Args:
+        txt (String): Text to add to the source material
+        """
         self.sourcetxt += txt
         self.words = re.findall(r"[\w']+|[.,!?;]", self.sourcetxt)    # Split word and punctuations symbols
         self.words = [x.lower() for x in self.words]                  # We store the words as their lowercase version
@@ -29,7 +34,13 @@ class MarkovPy():
             
             
     def random_wordgeneration(self, n = 10):
-
+         """
+        Generate n random word by chosing randomly from the transitions dictionary
+        Args:
+            n (int): Numbers of words to generate.
+        Returns:
+            generated (string): A string containing the generated output.
+        """
         if not n or n < 0: return ""                                  # Sanity check on the number of words to generate
         
         generated = ""
