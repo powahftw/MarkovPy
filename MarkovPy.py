@@ -41,7 +41,7 @@ class MarkovPy():
         Returns:
         generated (string): A string containing the generated output.
         """
-        if not n or n < 0: return ""                                  # Sanity check on the number of words to generate
+        if not self.words not n or n < 0: return ""                                  # Sanity check on the number of words to generate
         
         generated = ""
         
