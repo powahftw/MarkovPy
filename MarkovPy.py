@@ -7,7 +7,6 @@ DOUBLE_PUNCT = False
 
 class MarkovPy():
     def __init__(self, txt = ""):
-        self.nextransition = defaultdict(list)
         self.sourcetxt = ""
         self.words = []
         
@@ -15,12 +14,13 @@ class MarkovPy():
             self.morewords(txt)
         
     def morewords(self, txt = ""):
-         """
+        """
         Add text to the source material. Process the new list of words and the transitions dictionary
         Args:
         txt (String): Text to add to the source material
         """
-        self.sourcetxt += txt
+        self.sourcetxt += " " + txt
+        self.nextransition = defaultdict(list)
         self.words = re.findall(r"[\w']+|[.,!?;]", self.sourcetxt)    # Split word and punctuations symbols
         self.words = [x.lower() for x in self.words]                  # We store the words as their lowercase version
         for index, element in enumerate(self.words[:-1]):             # Loop over the words, skipping the last one
@@ -34,12 +34,12 @@ class MarkovPy():
             
             
     def random_wordgeneration(self, n = 10):
-         """
+        """
         Generate n random word by chosing randomly from the transitions dictionary
         Args:
-            n (int): Numbers of words to generate.
+        n (int): Numbers of words to generate.
         Returns:
-            generated (string): A string containing the generated output.
+        generated (string): A string containing the generated output.
         """
         if not n or n < 0: return ""                                  # Sanity check on the number of words to generate
         
