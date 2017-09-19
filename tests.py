@@ -1,12 +1,21 @@
-from markovpy import MarkovPy
-
 import unittest
+
+from markovpy import MarkovPy
 
 class Markov(unittest.TestCase):
     def test_empty(self):
         test = MarkovPy()
         self.assertTrue(not test.words)
-        self.assertTrue(test.random_wordgeneration() == "")
+        self.assertTrue(test.random_wordsgeneration() == "")
+        test.morewords("is this the is")
+        self.assertTrue(test.nextransition['is'], ['this'])
+        self.assertTrue(test.nextransition['the'], ['is'])
+
+    def test_punct_and_upper(self):
+        test = MarkovPy("Hey! There")
+        self.assertTrue(test.nextransition['hey'], ['!'])
+        test.morewords("hey world")
+        self.assertTrue(test.nextransition['hey'], ['!', 'world'])
 
     def test_nextransition(self):
         test = MarkovPy("hello world hello worlds")
@@ -22,8 +31,9 @@ class Markov(unittest.TestCase):
 
     def test_generation(self):
         test = MarkovPy("hi hi hi hi hi hi hi hi hi hi")
-        self.assertTrue(test.random_wordgeneration(), "hi hi hi hi hi hi hi hi hi hi")
-        self.assertTrue(test.random_wordgeneration(12), "hi hi hi hi hi hi hi hi hi hi hi hi")
+        self.assertTrue(test.random_wordsgeneration(), "hi hi hi hi hi hi hi hi hi hi")
+        self.assertTrue(test.random_wordsgeneration(12), "hi hi hi hi hi hi hi hi hi hi hi hi")
+
 
 if __name__ == "__main__":
     unittest.main()
