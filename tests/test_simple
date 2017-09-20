@@ -2,7 +2,7 @@ import unittest
 
 from markovpy import MarkovPy
 
-class Markov(unittest.TestCase):
+class TestMarkov(unittest.TestCase):
     def test_empty(self):
         test = MarkovPy()
         self.assertTrue(not test.words)
