@@ -4,4 +4,4 @@ python:
 install:
 - pip install pytest-travis-fold
 script:
-- py.test
+-  python -m pytest
