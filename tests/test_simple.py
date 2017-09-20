@@ -1,6 +1,6 @@
 import unittest
 
-from markovpy import MarkovPy
+from MarkovPy import MarkovPy
 
 class TestMarkov(unittest.TestCase):
     def test_empty(self):
